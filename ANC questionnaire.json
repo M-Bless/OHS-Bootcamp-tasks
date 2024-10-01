@@ -1,6 +1,7 @@
 {
   "resourceType": "Questionnaire",
   "language": "nb-NO",
+  "id": "d2dc9ddc-9a32-4cc2-85a8-942f4dd42669",
   "status": "draft",
   "publisher": "NHN",
   "meta": {
@@ -63,7 +64,6 @@
       }
     }
   ],
-  "id": "d2dc9ddc-9a32-4cc2-85a8-942f4dd42669",
   "item": [
     {
       "linkId": "eea9ab4a-f771-4141-f7bd-d01cd186bb23",
@@ -87,6 +87,24 @@
       "type": "integer",
       "text": "Age",
       "required": true
+    },
+    {
+      "linkId": "7b14c147-aa2d-4c16-a9e2-9bc9471ea000",
+      "type": "string",
+      "text": "Phone number",
+      "required": false
+    },
+    {
+      "linkId": "5f41515e-b580-46f5-8030-787ac278aa3e",
+      "type": "string",
+      "text": "Emergency phone number(someone close)",
+      "required": false
+    },
+    {
+      "linkId": "c5fb27e9-17d0-40ec-aa45-bbd8e41fa0c8",
+      "type": "string",
+      "text": "Area of residence",
+      "required": false
     },
     {
       "linkId": "1b5a9566-2b73-4228-8fe2-a9c09c0cb036",
