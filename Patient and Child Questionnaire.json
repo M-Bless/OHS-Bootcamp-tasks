@@ -1,0 +1,703 @@
+{
+  "resourceType": "Questionnaire",
+  "language": "nb-NO",
+  "status": "draft",
+  "publisher": "NHN",
+  "meta": {
+    "profile": [
+      "http://ehelse.no/fhir/StructureDefinition/sdf-Questionnaire"
+    ],
+    "tag": [
+      {
+        "system": "urn:ietf:bcp:47",
+        "code": "nb-NO",
+        "display": "Bokmål"
+      }
+    ],
+    "security": [
+      {
+        "code": "3",
+        "display": "Helsehjelp (Full)",
+        "system": "urn:oid:2.16.578.1.12.4.1.1.7618"
+      }
+    ]
+  },
+  "contact": [
+    {
+      "name": "http://www.nhn.no"
+    }
+  ],
+  "subjectType": [
+    "Patient"
+  ],
+  "extension": [
+    {
+      "url": "http://helsenorge.no/fhir/StructureDefinition/sdf-sidebar",
+      "valueCoding": {
+        "system": "http://helsenorge.no/fhir/ValueSet/sdf-sidebar",
+        "code": "1"
+      }
+    },
+    {
+      "url": "http://helsenorge.no/fhir/StructureDefinition/sdf-information-message",
+      "valueCoding": {
+        "system": "http://helsenorge.no/fhir/ValueSet/sdf-information-message",
+        "code": "1"
+      }
+    },
+    {
+      "url": "http://helsenorge.no/fhir/StructureDefintion/sdf-itemControl-visibility",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://helsenorge.no/fhir/CodeSystem/AttachmentRenderOptions",
+            "code": "hide-help",
+            "display": "Hide help texts"
+          },
+          {
+            "system": "http://helsenorge.no/fhir/CodeSystem/AttachmentRenderOptions",
+            "code": "hide-sublabel",
+            "display": "Hide sublabel texts"
+          }
+        ]
+      }
+    }
+  ],
+  "id": "ad8c8bee-fe25-480e-b981-8d122f7b6810",
+  "item": [
+    {
+      "linkId": "9fd8f516-48c3-4e6f-c966-f9d924bf8bf7",
+      "type": "string",
+      "text": "First Name",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/entryFormat",
+          "valueString": "First Name"
+        }
+      ],
+      "required": true
+    },
+    {
+      "linkId": "c3bdc43a-2c3b-4d80-a5e6-cc41acfb872c",
+      "type": "string",
+      "text": "Middle Name",
+      "required": false,
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/entryFormat",
+          "valueString": "Middle Name"
+        }
+      ]
+    },
+    {
+      "linkId": "c401a5e5-4df2-4c8f-b30c-f07262cced57",
+      "type": "string",
+      "text": "Last Name",
+      "required": true,
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/entryFormat",
+          "valueString": "Last Name"
+        }
+      ]
+    },
+    {
+      "linkId": "a91f858d-b9cb-4e76-8731-d2a2c86fcd32",
+      "type": "date",
+      "text": "Date of Birth",
+      "required": true
+    },
+    {
+      "linkId": "55e21009-bc4a-4d55-8deb-c6a8edd99650",
+      "type": "choice",
+      "text": "Gender",
+      "required": true,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "id": "c024d8c5-4aaf-44c1-8ddc-eebaf87a81eb",
+            "code": "male",
+            "system": "urn:uuid:a2a730e1-2c36-446e-827a-6f19b388c01c",
+            "display": "Male"
+          }
+        },
+        {
+          "valueCoding": {
+            "id": "bcf37218-0c3b-4262-9f70-17a6e15a51bd",
+            "code": "female",
+            "system": "urn:uuid:a2a730e1-2c36-446e-827a-6f19b388c01c",
+            "display": "Female"
+          }
+        },
+        {
+          "valueCoding": {
+            "id": "0f29f1d7-f78e-4092-86fe-0dee7ad66caa",
+            "code": "other",
+            "system": "urn:uuid:a2a730e1-2c36-446e-827a-6f19b388c01c",
+            "display": "Other"
+          }
+        },
+        {
+          "valueCoding": {
+            "id": "c74212bb-5916-4937-86e5-33256f53b334",
+            "code": "prefer-not-to-say",
+            "system": "urn:uuid:a2a730e1-2c36-446e-827a-6f19b388c01c",
+            "display": "Prefer not to say"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "2c0976f8-8f0c-45c3-8231-c8b707663576",
+      "type": "integer",
+      "text": "Age",
+      "required": true
+    },
+    {
+      "linkId": "4870deb3-2b13-4f69-8a30-1eaa10097744",
+      "type": "integer",
+      "text": "Phone Number",
+      "required": true,
+      "enableWhen": [
+        {
+          "question": "2c0976f8-8f0c-45c3-8231-c8b707663576",
+          "operator": ">",
+          "answerInteger": 18
+        }
+      ]
+    },
+    {
+      "linkId": "26252677-187d-4d72-81f2-eedfd47ba825",
+      "type": "string",
+      "text": "Email",
+      "required": false,
+      "enableWhen": [
+        {
+          "question": "4870deb3-2b13-4f69-8a30-1eaa10097744",
+          "operator": "exists",
+          "answerBoolean": true
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/entryFormat",
+          "valueString": "example@gmail.com"
+        }
+      ]
+    },
+    {
+      "linkId": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+      "type": "choice",
+      "text": "Select",
+      "required": true,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "id": "4098d69d-8a21-4ee6-835e-a1900b3fd496",
+            "code": "parent",
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "display": "Parent"
+          }
+        },
+        {
+          "valueCoding": {
+            "id": "f391ac35-7a9f-4c67-865a-b5c1011f10b5",
+            "code": "child",
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "display": "Child"
+          }
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/ValueSet/questionnaire-item-control",
+                "code": "radio-button"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "806e44bb-785a-4d62-87a5-f6ac0fc289d4",
+      "type": "string",
+      "text": "Grade/Year",
+      "required": true,
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "child"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "6b5230c8-eb98-4d85-b700-04379c788d9b",
+      "type": "string",
+      "text": "School Name",
+      "required": true,
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "child"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "ffa2933c-a913-4a76-81b9-b3bc24d7c705",
+      "type": "string",
+      "text": "Parent/Guardian Name",
+      "required": true,
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "child"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "f835d942-e95a-4800-9dbc-edebcc820536",
+      "type": "string",
+      "text": "Parent's/Guardian's Phone Number",
+      "required": true,
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "child"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "cef9ac05-e71c-4769-85d7-6e58c87b0c92",
+      "type": "string",
+      "text": "City",
+      "required": false,
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "parent"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "9a9285b4-8ae8-4277-8cc2-dc4fd797a50c",
+      "type": "integer",
+      "text": "How many children do you have",
+      "required": true,
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "parent"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "d1fe6970-8137-42f0-8e74-0862ee99c921",
+      "type": "string",
+      "text": "Emergency Contact Name",
+      "required": false,
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "parent"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "0e362fca-5830-44f1-fad7-436cc7a1a9f5",
+      "type": "string",
+      "text": "Emergency Contact Number",
+      "required": true,
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "parent"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "82083687-e163-4e33-97f2-22dcd6f7ec7c",
+      "type": "choice",
+      "text": "Do you have a health insurance?",
+      "required": false,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "id": "060a2b2f-79a6-4b0a-895b-fcc0b75f7924",
+            "code": "yes",
+            "system": "urn:uuid:43c38dc4-8ad6-40f5-ca1e-141b6c0d6140",
+            "display": "Yes"
+          }
+        },
+        {
+          "valueCoding": {
+            "id": "5760cceb-1443-4171-8631-c43cb67f33fb",
+            "code": "no",
+            "system": "urn:uuid:43c38dc4-8ad6-40f5-ca1e-141b6c0d6140",
+            "display": "No"
+          }
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/ValueSet/questionnaire-item-control",
+                "code": "radio-button"
+              }
+            ]
+          }
+        }
+      ],
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "parent"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "0b508ef3-2572-44a6-84d0-f7515abb1eff",
+      "type": "choice",
+      "text": "Do you have any chronic medical condition",
+      "required": true,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "id": "c649cff2-0b6b-4417-8b89-5528fb72eaa5",
+            "code": "yes",
+            "system": "urn:uuid:ae3a9212-9fb9-4421-a590-03840643aa68",
+            "display": "Yes"
+          }
+        },
+        {
+          "valueCoding": {
+            "id": "dbddf22b-25c1-404c-9429-389fb5770d33",
+            "code": "no",
+            "system": "urn:uuid:ae3a9212-9fb9-4421-a590-03840643aa68",
+            "display": "No"
+          }
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/ValueSet/questionnaire-item-control",
+                "code": "radio-button"
+              }
+            ]
+          }
+        }
+      ],
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "parent"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "e045eeb4-9f56-411c-9031-ce057c849198",
+      "type": "choice",
+      "required": false,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "id": "c649cff2-0b6b-4417-8b89-5528fb72eaa5",
+            "code": "yes",
+            "system": "urn:uuid:ae3a9212-9fb9-4421-a590-03840643aa68",
+            "display": "Yes"
+          }
+        },
+        {
+          "valueCoding": {
+            "id": "dbddf22b-25c1-404c-9429-389fb5770d33",
+            "code": "no",
+            "system": "urn:uuid:ae3a9212-9fb9-4421-a590-03840643aa68",
+            "display": "No"
+          }
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/ValueSet/questionnaire-item-control",
+                "code": "radio-button"
+              }
+            ]
+          }
+        }
+      ],
+      "text": "Are you taking any medications or supplements"
+    },
+    {
+      "linkId": "5f3bf1d3-173f-4a08-aa00-17f72f82de8c",
+      "type": "choice",
+      "required": false,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "id": "c649cff2-0b6b-4417-8b89-5528fb72eaa5",
+            "code": "yes",
+            "system": "urn:uuid:ae3a9212-9fb9-4421-a590-03840643aa68",
+            "display": "Yes"
+          }
+        },
+        {
+          "valueCoding": {
+            "id": "dbddf22b-25c1-404c-9429-389fb5770d33",
+            "code": "no",
+            "system": "urn:uuid:ae3a9212-9fb9-4421-a590-03840643aa68",
+            "display": "No"
+          }
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/ValueSet/questionnaire-item-control",
+                "code": "radio-button"
+              }
+            ]
+          }
+        }
+      ],
+      "text": "Do you have any allergies?"
+    },
+    {
+      "linkId": "d20fd1f7-11ac-47c1-85d3-2275b1604aa9",
+      "type": "text",
+      "text": "If yes, explain the allergies",
+      "required": false,
+      "enableWhen": [
+        {
+          "question": "5f3bf1d3-173f-4a08-aa00-17f72f82de8c",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:ae3a9212-9fb9-4421-a590-03840643aa68",
+            "code": "yes"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "50666380-b7c5-4d7c-8358-b424f8c28456",
+      "type": "text",
+      "text": "What is the reason for your visit today?",
+      "required": false
+    },
+    {
+      "linkId": "7bef1946-6c52-4247-a831-2a5f32e90903",
+      "type": "text",
+      "text": "Please describe your symptoms or concerns.",
+      "required": false
+    },
+    {
+      "linkId": "8f8760e4-f249-4261-898b-f9e1a3e7b63b",
+      "type": "choice",
+      "text": "Do you consume alcohol or smoke cigarettes?",
+      "required": false,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "id": "2189bd16-eec4-4b3f-960a-10b2d01df919",
+            "code": "yes",
+            "system": "urn:uuid:f89e837e-2f13-493a-8c46-efccde6ccc00",
+            "display": "Yes"
+          }
+        },
+        {
+          "valueCoding": {
+            "id": "3f606587-1ae1-4621-d400-5a7dc19851d2",
+            "code": "no",
+            "system": "urn:uuid:f89e837e-2f13-493a-8c46-efccde6ccc00",
+            "display": "No"
+          }
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/ValueSet/questionnaire-item-control",
+                "code": "radio-button"
+              }
+            ]
+          }
+        }
+      ],
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "parent"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "55ce963c-c1d6-4841-c4b5-6d992d36df79",
+      "type": "choice",
+      "required": false,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "id": "2189bd16-eec4-4b3f-960a-10b2d01df919",
+            "code": "yes",
+            "system": "urn:uuid:f89e837e-2f13-493a-8c46-efccde6ccc00",
+            "display": "Yes"
+          }
+        },
+        {
+          "valueCoding": {
+            "id": "3f606587-1ae1-4621-d400-5a7dc19851d2",
+            "code": "no",
+            "system": "urn:uuid:f89e837e-2f13-493a-8c46-efccde6ccc00",
+            "display": "No"
+          }
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/ValueSet/questionnaire-item-control",
+                "code": "radio-button"
+              }
+            ]
+          }
+        }
+      ],
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "parent"
+          }
+        }
+      ],
+      "text": "If yes, how many drinks or cigarettes per week ?"
+    },
+    {
+      "linkId": "4129d342-841b-4a4c-fb79-0f5436f313ce",
+      "type": "choice",
+      "text": "Do you have a family history of any medical conditions (e.g., heart disease, diabetes, cancer)?",
+      "required": false,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "id": "16ab07cb-e607-44fe-8c43-8d93d3c9e8be",
+            "code": "yes",
+            "system": "urn:uuid:15c892c0-0b45-4cea-8246-92124024af03",
+            "display": "Yes"
+          }
+        },
+        {
+          "valueCoding": {
+            "id": "5b11ba08-4483-4d04-b3d2-1a0d5458add0",
+            "code": "no",
+            "system": "urn:uuid:15c892c0-0b45-4cea-8246-92124024af03",
+            "display": "No"
+          }
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/ValueSet/questionnaire-item-control",
+                "code": "radio-button"
+              }
+            ]
+          }
+        }
+      ],
+      "enableWhen": [
+        {
+          "question": "9d3d6c64-0d09-40de-85a8-761febdb40fc",
+          "operator": "=",
+          "answerCoding": {
+            "system": "urn:uuid:a151050c-e0ea-4db6-8064-7f9b0172dc68",
+            "code": "parent"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "1f9d5376-5c3a-4725-85bd-435dcaacdb71",
+      "type": "text",
+      "text": "Is there any other information about your health or medical history that you think is important for us to know?",
+      "required": false
+    },
+    {
+      "linkId": "e3d4a828-e502-4ffb-8b29-420ac7a76137",
+      "type": "boolean",
+      "required": false,
+      "text": "By submitting this form, I confirm that the information provided is accurate and complete to the best of my knowledge. I understand that this information will be used to assist in my medical evaluation and treatment."
+    }
+  ]
+}
